@@ -15,7 +15,7 @@ Tree = [128,128,0]
 SignSymbol = [192,128,128]
 Fence = [64,64,128]
 Car = [64,0,128]
-Pedestrian = [64,64,0]
+Pedestrian = [64,64,0]  
 Bicyclist = [0,128,192]
 Unlabelled = [0,0,0]
 
@@ -121,4 +121,5 @@ def labelVisualize(num_class,color_dict,img):
 def saveResult(save_path,npyfile,flag_multi_class = False,num_class = 2):
     for i,item in enumerate(npyfile):
         img = labelVisualize(num_class,COLOR_DICT,item) if flag_multi_class else item[:,:,0]
+        img = (np.clip(img, 0, 1) * 255).astype(np.uint8)
         io.imsave(os.path.join(save_path,"%d_predict.png"%i),img)
