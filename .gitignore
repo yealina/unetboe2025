@@ -1,2 +1,4 @@
-test/
 unet_membrane.hdf5
+data/membrane
+.venv/
+.vscode/
